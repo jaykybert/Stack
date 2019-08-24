@@ -11,6 +11,10 @@ public class Demo {
 		sStack.push(5);
 		sStack.push(6);
 		sStack.push(7);
+		
+		for(Integer item: sStack.getStack()) {
+			System.out.print(item + " ");
+		}
 		try { // No space for item.
 			sStack.push(5);
 		}
@@ -27,13 +31,8 @@ public class Demo {
 		catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println(e);
 		}
+		System.out.println("sStack Length: " + sStack.getLength());
 		
-		System.out.println(sStack.getLength());
-		
-		
-		
-		
-		
-
+		StaticStack<Integer> sStack2 = new StaticStack<Integer>(sStack);
 	}
 }
