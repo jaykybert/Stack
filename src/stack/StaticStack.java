@@ -12,18 +12,14 @@ class StaticStack<T> implements StackInterface<T> {
 		stkTop = 0;
 	}
 	
-	
 	StaticStack(StaticStack<T> o) {
 		stk = o.stk;
 		stkTop = o.stkTop;
 	}
 	
-	
 	// Access Methods
 	public int getLength() { return stk.length; }
-	
-	public T[] getStack() { return stk; }
-	
+	public int getCount() { return stkTop; }
 	
 	// Interaction Methods
 	public void push(T ob) {
@@ -43,5 +39,4 @@ class StaticStack<T> implements StackInterface<T> {
 		return stk[stkTop];
 		}
 	}
-	
 }
