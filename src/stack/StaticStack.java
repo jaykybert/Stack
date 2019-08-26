@@ -19,7 +19,7 @@ class StaticStack<T> implements StackInterface<T> {
 	
 	// Access Methods
 	public int getLength() { return stk.length; }
-	public int getCount() { return stkTop; }
+	public int getItemCount() { return stkTop; }
 	
 	// Interaction Methods
 	public void push(T ob) {
