@@ -4,7 +4,7 @@ public class Demo {
 
 	public static void main(String[] args) {
 		
-		/*
+		
 		// 3-length Integer Array. Catch Out-Of-Bounds.
 		Integer[] intArr = new Integer[3];
 		
@@ -22,12 +22,22 @@ public class Demo {
 		System.out.println("Item Count: " + sStack.getItemCount());
 		sStack.pop();
 		System.out.println("Item Count: " + sStack.getItemCount());
-		sStack.push(12);
+		
+		System.out.println("\nAdding Items\n");
+		sStack.push(12); 
 		System.out.println("Item Count: " + sStack.getItemCount());
-		
+		try {
+			sStack.push(17);	// 3rd item.
+			sStack.push(18);	// 4th item.
+		}
+		catch(IndexOutOfBoundsException e) {
+			System.out.println(e);
+		}
 		// Constructor Test - Two objects with the same reference.
-		*/
 		
+		
+		
+		/*
 		// Dynamic Stack:
 		Double[] dArr = new Double[5];
 		DynamicStack<Double> dStack = new DynamicStack<Double>(dArr);
@@ -49,7 +59,7 @@ public class Demo {
 		
 		System.out.println("Stack Size: " + dStack.getLength());
 		System.out.println("Stack Count: " + dStack.getItemCount());
-		
+		*/
 		
 		
 

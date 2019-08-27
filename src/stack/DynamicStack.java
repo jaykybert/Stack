@@ -22,8 +22,8 @@ public class DynamicStack<T> implements StackInterface<T> {
 		if(stkTop == stk.length)  // Increase array size.
 			setStack(Arrays.copyOf(stk, stk.length * 5));
 		
-		stk[stkTop] = ob;
-		stkTop++;	
+		stk[stkTop++] = ob;
+			
 	}
 	
 	public T pop() {

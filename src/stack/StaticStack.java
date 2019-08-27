@@ -25,18 +25,14 @@ class StaticStack<T> implements StackInterface<T> {
 	public void push(T ob) {
 		if (stkTop == stk.length) // Array is Full.
 			throw new ArrayIndexOutOfBoundsException();
-		else {
-			stk[stkTop] = ob;
-			stkTop++;
-		}
+		
+		stk[stkTop++] = ob;		
 	}
 	
 	public T pop() {
 		if(stkTop == 0)  // Array is empty.
 			throw new ArrayIndexOutOfBoundsException();
-		else {
-		stkTop--;
-		return stk[stkTop];
-		}
+		
+		return stk[--stkTop];	
 	}
 }
