@@ -12,17 +12,17 @@ public class DynamicStack<T> implements StackInterface<T> {
 		stkTop = 0;
 	}
 	
-	private void setStack(T[] ob) { stk = ob; }
+	private void setStack(T[] o) { stk = o; }
 	
 	public int getLength() { return stk.length; }
 	public int getItemCount() { return stkTop; }
 	
 	// Interaction Methods
-	public void push(T ob) {
+	public void push(T o) {
 		if(stkTop == stk.length)  // Increase array size.
 			setStack(Arrays.copyOf(stk, stk.length * 5));
 		
-		stk[stkTop++] = ob;
+		stk[stkTop++] = o;
 			
 	}
 	

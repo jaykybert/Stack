@@ -5,36 +5,50 @@ public class Demo {
 	public static void main(String[] args) {
 		
 		
+		
 		// 3-length Integer Array. Catch Out-Of-Bounds.
 		Integer[] intArr = new Integer[3];
 		
+		// is stkTop 0 by default when passing an array argumement?
+		// What happens if the array passed already contains values?
+		
 		StaticStack<Integer> sStack = new StaticStack<Integer>(intArr);
-		System.out.println("Length of Array: " + sStack.getLength());
-		sStack.push(5);
-		System.out.println("Item Count: " + sStack.getItemCount());
-		sStack.push(6);
-		System.out.println("Item Count: " + sStack.getItemCount());
-		sStack.push(7);
-		System.out.println("Item Count: " + sStack.getItemCount());
 		
-		System.out.println("\nRemoving Items\n");
-		sStack.pop();
-		System.out.println("Item Count: " + sStack.getItemCount());
-		sStack.pop();
-		System.out.println("Item Count: " + sStack.getItemCount());
-		
-		System.out.println("\nAdding Items\n");
-		sStack.push(12); 
-		System.out.println("Item Count: " + sStack.getItemCount());
-		try {
-			sStack.push(17);	// 3rd item.
-			sStack.push(18);	// 4th item.
+		System.out.print("Pushing: ");
+		for(int i=0; i < 3; i++) {
+			System.out.print((i*10) + " ");
+			sStack.push(i*10);
 		}
-		catch(IndexOutOfBoundsException e) {
+		
+		// Over-push stack.
+		System.out.println("\nPushing...");
+		try {
+			sStack.push(30);
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println(e);
 		}
-		// Constructor Test - Two objects with the same reference.
+		System.out.println();
 		
+		System.out.println("Array Length: " + sStack.getLength());
+		System.out.println("Item Count: " + sStack.getItemCount());
+		
+		System.out.println("Popping 1 Item...");
+		System.out.println("Item Popped: " + sStack.pop());
+		System.out.println("Item Count: " + sStack.getItemCount());
+		 
+		System.out.println();
+		
+		for(int i=0; i < 3; i++) { // Over-pop stack.
+			System.out.println("Popping...");
+			try {
+				sStack.pop();
+			}
+			catch(ArrayIndexOutOfBoundsException e) {
+				System.out.println(e);
+			}
+			System.out.println("Item Count: " + sStack.getItemCount());
+		}
 		
 		
 		/*
@@ -61,6 +75,27 @@ public class Demo {
 		System.out.println("Stack Count: " + dStack.getItemCount());
 		*/
 		
+		
+		/*
+		// Circular Stack:
+		Character[] cArr = new Character[10];
+		CircularStack<Character> cStack = new CircularStack<Character>(cArr);
+		
+		System.out.print("Pushing: ");
+		for(int i=0; i < 10; i++) {
+			System.out.print(i + " ");
+			cStack.push((char) i);
+		}
+		
+		System.out.println();
+		
+		System.out.println("Array Length: " + cStack.getLength());
+		System.out.println("Item Count: " + cStack.getItemCount());
+		
+		
+
+		System.out.println("Item Count: " + cStack.getItemCount());
+		*/
 		
 
 	}

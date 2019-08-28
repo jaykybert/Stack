@@ -22,11 +22,11 @@ class StaticStack<T> implements StackInterface<T> {
 	public int getItemCount() { return stkTop; }
 	
 	// Interaction Methods
-	public void push(T ob) {
+	public void push(T o) {
 		if (stkTop == stk.length) // Array is Full.
 			throw new ArrayIndexOutOfBoundsException();
 		
-		stk[stkTop++] = ob;		
+		stk[stkTop++] = o;		
 	}
 	
 	public T pop() {
