@@ -4,12 +4,18 @@ public class Demo {
 
 	public static void main(String[] args) {
 		
+		/* Notes:
+		 * Improve demo system.
+		 * Create factory method that creates a chosen stack of a chosen size (excluding dynamic).
+		 * Put everything into call-able methods, clean up code. Run extraneous data, handle exceptions.
+		 */
 		
 		
+		/*
 		// 3-length Integer Array. Catch Out-Of-Bounds.
 		Integer[] intArr = new Integer[3];
 		
-		// is stkTop 0 by default when passing an array argumement?
+		// is stkTop 0 by default when passing an array argument?
 		// What happens if the array passed already contains values?
 		
 		StaticStack<Integer> sStack = new StaticStack<Integer>(intArr);
@@ -49,6 +55,24 @@ public class Demo {
 			}
 			System.out.println("Item Count: " + sStack.getItemCount());
 		}
+		*/
+		Integer[] definedArray = {1, 2, 3, 4, 5};
+		Integer[] noItemArray = new Integer[5];
+		
+		StaticStack<Integer> intStack = new StaticStack<Integer>(definedArray);
+		StaticStack<Integer> intStack2 = new StaticStack<Integer>(noItemArray);
+		
+		System.out.println("No Item Array:");
+		System.out.println("Stack Length: " + intStack2.getLength());
+		System.out.println("Stack Count: " + intStack2.getItemCount());
+		
+		System.out.println();
+		
+		System.out.println("Defined Array:");
+		System.out.println("Stack Length: " + intStack.getLength());
+		System.out.println("Stack Count: " + intStack.getItemCount());
+		
+		
 		
 		
 		/*

@@ -10,6 +10,11 @@ public class DynamicStack<T> implements StackInterface<T> {
 	DynamicStack(T[] arr) {
 		stk = arr;
 		stkTop = 0;
+		// Increment stack top for arrays with values.
+		for(T item: stk) {
+			if(item != null)
+				stkTop++;
+		}
 	}
 	
 	private void setStack(T[] o) { stk = o; }

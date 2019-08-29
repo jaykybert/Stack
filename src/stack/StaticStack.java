@@ -10,6 +10,11 @@ class StaticStack<T> implements StackInterface<T> {
 	StaticStack(T[] arr) {
 		stk = arr;
 		stkTop = 0;
+		// Increment stack top for arrays with values.
+		for(T item: stk) {
+			if(item != null)
+				stkTop++;
+		}
 	}
 	
 	StaticStack(StaticStack<T> o) {
