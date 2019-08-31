@@ -1,125 +1,63 @@
 package stack;
 
 public class Demo {
+	
+	static StaticStack<Integer> createStaticStack(int len) {
+		Integer[] intArray = new Integer[len];
+		StaticStack<Integer> stk = new StaticStack<Integer>(intArray);
+		return stk;
+	}
+	
+	static DynamicStack<Double> createDynamicStack(int len) {
+		Double[] doubleArray = new Double[len];
+		DynamicStack<Double> stk = new DynamicStack<Double>(doubleArray);
+		return stk;
+	}
+	
+	static CircularStack<Character> createCircularStack(int len) {
+		Character[] charArray = new Character[len];
+		CircularStack<Character> stk = new CircularStack<Character>(charArray);
+		return stk;
+	}
 
+	static void DemoStaticStack(StaticStack<Integer> stk) {
+		for(int i=0; i < stk.getLength() + 1; i++) {
+			System.out.println("Adding: " + i * 10);
+			try {
+				stk.push(i*10);
+				System.out.println("Item Count: " + stk.getItemCount() + "\n");
+			}
+			catch(FullStackException e) {
+				System.out.println("Exception Raised: " + e);
+			}
+		}
+		System.out.println("Stack Length: " + stk.getLength());
+		
+		for(int i=0; i < stk.getLength() + 1; i++) {
+			System.out.println("Popping...");
+			try {
+				stk.pop();
+				System.out.println("Item Count: " + stk.getItemCount() + " \n");
+			}
+			catch(EmptyStackException e) {
+				System.out.println("Excecption Raised: " + e);
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		
 		/* Notes:
 		 * Improve demo system.
 		 * Create factory method that creates a chosen stack of a chosen size (excluding dynamic).
 		 * Put everything into call-able methods, clean up code. Run extraneous data, handle exceptions.
-		 */
+		 */	
 		
+		StaticStack<Integer> staticStack = Demo.createStaticStack(10);
+		Demo.DemoStaticStack(staticStack);
 		
-		/*
-		// 3-length Integer Array. Catch Out-Of-Bounds.
-		Integer[] intArr = new Integer[3];
-		
-		// is stkTop 0 by default when passing an array argument?
-		// What happens if the array passed already contains values?
-		
-		StaticStack<Integer> sStack = new StaticStack<Integer>(intArr);
-		
-		System.out.print("Pushing: ");
-		for(int i=0; i < 3; i++) {
-			System.out.print((i*10) + " ");
-			sStack.push(i*10);
-		}
-		
-		// Over-push stack.
-		System.out.println("\nPushing...");
-		try {
-			sStack.push(30);
-		}
-		catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println(e);
-		}
-		System.out.println();
-		
-		System.out.println("Array Length: " + sStack.getLength());
-		System.out.println("Item Count: " + sStack.getItemCount());
-		
-		System.out.println("Popping 1 Item...");
-		System.out.println("Item Popped: " + sStack.pop());
-		System.out.println("Item Count: " + sStack.getItemCount());
-		 
-		System.out.println();
-		
-		for(int i=0; i < 3; i++) { // Over-pop stack.
-			System.out.println("Popping...");
-			try {
-				sStack.pop();
-			}
-			catch(ArrayIndexOutOfBoundsException e) {
-				System.out.println(e);
-			}
-			System.out.println("Item Count: " + sStack.getItemCount());
-		}
-		*/
-		Integer[] definedArray = {1, 2, 3, 4, 5};
-		Integer[] noItemArray = new Integer[5];
-		
-		StaticStack<Integer> intStack = new StaticStack<Integer>(definedArray);
-		StaticStack<Integer> intStack2 = new StaticStack<Integer>(noItemArray);
-		
-		System.out.println("No Item Array:");
-		System.out.println("Stack Length: " + intStack2.getLength());
-		System.out.println("Stack Count: " + intStack2.getItemCount());
-		
-		System.out.println();
-		
-		System.out.println("Defined Array:");
-		System.out.println("Stack Length: " + intStack.getLength());
-		System.out.println("Stack Count: " + intStack.getItemCount());
-		
-		
-		
-		
-		/*
-		// Dynamic Stack:
-		Double[] dArr = new Double[5];
-		DynamicStack<Double> dStack = new DynamicStack<Double>(dArr);
-		
-		dStack.push(1.0);
-		dStack.push(2.0);
-		dStack.push(3.0);
-		dStack.push(4.0);
-		dStack.push(5.0);
-		System.out.println("Stack Count: " + dStack.getItemCount());
-		System.out.println("Stack Size: " + dStack.getLength());
-		dStack.push(6.0);
-		System.out.println("Stack Count: " + dStack.getItemCount());
-		System.out.println("Stack Size: " + dStack.getLength());
-		
-		System.out.println("Removing two items...");
-		dStack.pop();
-		dStack.pop();
-		
-		System.out.println("Stack Size: " + dStack.getLength());
-		System.out.println("Stack Count: " + dStack.getItemCount());
-		*/
-		
-		
-		/*
-		// Circular Stack:
-		Character[] cArr = new Character[10];
-		CircularStack<Character> cStack = new CircularStack<Character>(cArr);
-		
-		System.out.print("Pushing: ");
-		for(int i=0; i < 10; i++) {
-			System.out.print(i + " ");
-			cStack.push((char) i);
-		}
-		
-		System.out.println();
-		
-		System.out.println("Array Length: " + cStack.getLength());
-		System.out.println("Item Count: " + cStack.getItemCount());
-		
-		
-
-		System.out.println("Item Count: " + cStack.getItemCount());
-		*/
+		DynamicStack<Double> dynamicStack = Demo.createDynamicStack(5);
+		CircularStack<Character> circularStack = Demo.createCircularStack(3);
 		
 
 	}
