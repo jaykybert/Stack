@@ -4,9 +4,7 @@ class StaticStack<T> implements StackInterface<T> {
 	private T[] stk;
 	private int stkTop;
 	
-	
 	// Constructors
-	
 	StaticStack(T[] arr) {
 		stk = arr;
 		stkTop = 0;
@@ -27,16 +25,16 @@ class StaticStack<T> implements StackInterface<T> {
 	public int getItemCount() { return stkTop; }
 	
 	// Interaction Methods
-	public void push(T o) {
+	public void push(T o) throws FullStackException {
 		if (stkTop == stk.length) // Array is Full.
-			throw new ArrayIndexOutOfBoundsException();
+			throw new FullStackException();
 		
 		stk[stkTop++] = o;		
 	}
 	
-	public T pop() {
+	public T pop() throws EmptyStackException {
 		if(stkTop == 0)  // Array is empty.
-			throw new ArrayIndexOutOfBoundsException();
+			throw new EmptyStackException();
 		
 		return stk[--stkTop];	
 	}

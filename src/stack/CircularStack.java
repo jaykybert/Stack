@@ -28,9 +28,9 @@ class CircularStack<T> implements StackInterface<T> {
 		stk[stkTop++] = o;
 	}
 	
-	public T pop() {
+	public T pop() throws EmptyStackException {
 		if (stkTop == 0) // Stack empty.
-			throw new ArrayIndexOutOfBoundsException();
+			throw new EmptyStackException();
 		
 		return stk[--stkTop];
 	}

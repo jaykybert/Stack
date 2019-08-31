@@ -31,9 +31,9 @@ public class DynamicStack<T> implements StackInterface<T> {
 			
 	}
 	
-	public T pop() {
+	public T pop() throws EmptyStackException {
 		if(stkTop == 0) // Array is empty.
-			throw new ArrayIndexOutOfBoundsException();
+			throw new EmptyStackException();
 		
 		return stk[--stkTop];
 	}
