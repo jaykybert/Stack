@@ -17,6 +17,11 @@ public class DynamicStack<T> implements StackInterface<T> {
 		}
 	}
 	
+	DynamicStack(DynamicStack<T> o) {
+		stk = o.stk;
+		stkTop = o.stkTop;
+	}
+	
 	private void setStack(T[] o) { stk = o; }
 	
 	public int getLength() { return stk.length; }

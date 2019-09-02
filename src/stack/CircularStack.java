@@ -15,6 +15,11 @@ class CircularStack<T> implements StackInterface<T> {
 		}
 	}
 	
+	CircularStack(CircularStack<T> o) {
+		stk = o.stk;
+		stkTop = o.stkTop;
+	}
+	
 	// Access Methods
 	public int getLength() { return stk.length; }
 	public int getItemCount() { return stkTop; }
