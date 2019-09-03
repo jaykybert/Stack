@@ -40,7 +40,39 @@ public class Demo {
 				System.out.println("Item Count: " + stk.getItemCount() + " \n");
 			}
 			catch(EmptyStackException e) {
-				System.out.println("Excecption Raised: " + e);
+				System.out.println("Exception Raised: " + e);
+			}
+		}
+	}
+	
+	static void DemoDynamicStack(DynamicStack<Double> stk) {
+		for(int i=0; i < 5; i++) {
+			System.out.println("Adding: " + i * 0.1);
+			stk.push(i * 0.1);			
+		}
+		System.out.println("Item Count: " + stk.getItemCount());
+		System.out.println("Stack Length: " + stk.getLength());
+		
+		System.out.println("\nPushing to full stack:\nAdding: " + 0.5);
+		stk.push(0.5);
+		System.out.println("Item Count: " + stk.getItemCount());
+		System.out.println("New Stack Length: " + stk.getLength() + "\n");
+		
+		for(int i=6; i < 25; i++) {
+			System.out.println("Adding: " + i * 0.1);
+			stk.push(i * 0.1);
+		}
+		System.out.println("Item Count: " + stk.getItemCount());
+		System.out.println("Stack Length: " + stk.getLength());
+		
+		System.out.println();
+		
+		for(int i=0; i < 26; i++) {
+			try {
+			System.out.println("Popping: " + stk.pop());
+			}
+			catch(EmptyStackException e) {
+				System.out.println("Exception Raised: " + e);
 			}
 		}
 	}
@@ -54,9 +86,10 @@ public class Demo {
 		 */	
 		
 		StaticStack<Integer> staticStack = Demo.createStaticStack(10);
-		Demo.DemoStaticStack(staticStack);
+		//Demo.DemoStaticStack(staticStack);
 		
 		DynamicStack<Double> dynamicStack = Demo.createDynamicStack(5);
+		Demo.DemoDynamicStack(dynamicStack);
 		CircularStack<Character> circularStack = Demo.createCircularStack(3);
 		
 
