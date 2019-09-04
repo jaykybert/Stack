@@ -20,7 +20,7 @@ public class Demo {
 		return stk;
 	}
 
-	static void DemoStaticStack(StaticStack<Integer> stk) {
+	static void demoStaticStack(StaticStack<Integer> stk) {
 		for(int i=0; i < stk.getLength() + 1; i++) {
 			System.out.println("Adding: " + i * 10);
 			try {
@@ -45,7 +45,7 @@ public class Demo {
 		}
 	}
 	
-	static void DemoDynamicStack(DynamicStack<Double> stk) {
+	static void demoDynamicStack(DynamicStack<Double> stk) {
 		for(int i=0; i < 5; i++) {
 			System.out.println("Adding: " + i * 0.1);
 			stk.push(i * 0.1);			
@@ -77,20 +77,45 @@ public class Demo {
 		}
 	}
 	
-	public static void main(String[] args) {
+	static void demoCircularStack(CircularStack<Character> stk) {
+		for(int i=0; i < 3; i++) {
+			System.out.println("Adding: " + (char) ('A' + i));
+			stk.push((char) ('A' + i));
+		}
+		System.out.println("Item Count: " + stk.getItemCount());
+		System.out.println("Stack Length: " + stk.getLength());
 		
-		/* Notes:
-		 * Improve demo system.
-		 * Create factory method that creates a chosen stack of a chosen size (excluding dynamic).
-		 * Put everything into call-able methods, clean up code. Run extraneous data, handle exceptions.
-		 */	
+		System.out.println("\nAdding: D");
+		stk.push('D');
+		System.out.println("Item Count: " + stk.getItemCount());
+		System.out.println("Stack Length: " + stk.getLength());
 		
+		for(int i=0; i < 3; i++) {
+			try {
+				System.out.println("Popping: " + stk.pop());
+			}
+			catch(EmptyStackException e) {
+				System.out.println("Exception Raised: " + e);
+			}
+		}
+	}
+	
+	public static void main(String[] args) {		
 		StaticStack<Integer> staticStack = Demo.createStaticStack(10);
-		//Demo.DemoStaticStack(staticStack);
+		//Demo.demoStaticStack(staticStack);
 		
 		DynamicStack<Double> dynamicStack = Demo.createDynamicStack(5);
-		Demo.DemoDynamicStack(dynamicStack);
+		//demo.DemoDynamicStack(dynamicStack);
+		
 		CircularStack<Character> circularStack = Demo.createCircularStack(3);
+		Demo.demoCircularStack(circularStack);
+		
+		/* CircularStack Notes:
+		 * Item Count resets to 1 once push() restarts at the start of the array.
+		 * Should you be able to pop() at index 0, making you go to the very end (think full-duplex)?
+		 */
+	
+
 		
 
 	}
