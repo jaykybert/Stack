@@ -85,12 +85,21 @@ public class Demo {
 		System.out.println("Item Count: " + stk.getItemCount());
 		System.out.println("Stack Length: " + stk.getLength());
 		
-		System.out.println("\nAdding: D");
-		stk.push('D');
+		System.out.println();
+		
+		// Overwrite data.
+		for(int i=3; i < 6; i++) {
+			System.out.println("Adding: " + (char) ('A' + i));
+			stk.push((char) ('A' + i));
+		}
 		System.out.println("Item Count: " + stk.getItemCount());
 		System.out.println("Stack Length: " + stk.getLength());
 		
-		for(int i=0; i < 3; i++) {
+		System.out.println();
+		
+		// Popping.
+		for(int i=0; i < 4; i++) {
+
 			try {
 				System.out.println("Popping: " + stk.pop());
 			}
@@ -98,6 +107,8 @@ public class Demo {
 				System.out.println("Exception Raised: " + e);
 			}
 		}
+		System.out.println("Item Count: " + stk.getItemCount());
+		System.out.println("Stack Length: " + stk.getLength());
 	}
 	
 	public static void main(String[] args) {		
@@ -107,13 +118,14 @@ public class Demo {
 		DynamicStack<Double> dynamicStack = Demo.createDynamicStack(5);
 		//demo.DemoDynamicStack(dynamicStack);
 		
-		CircularStack<Character> circularStack = Demo.createCircularStack(3);
-		Demo.demoCircularStack(circularStack);
-		
 		/* CircularStack Notes:
 		 * Item Count resets to 1 once push() restarts at the start of the array.
 		 * Should you be able to pop() at index 0, making you go to the very end (think full-duplex)?
 		 */
+		CircularStack<Character> circularStack = Demo.createCircularStack(3);
+		Demo.demoCircularStack(circularStack);
+		
+	
 	
 
 		

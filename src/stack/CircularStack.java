@@ -35,8 +35,8 @@ class CircularStack<T> implements StackInterface<T> {
 	
 	public T pop() throws EmptyStackException {
 		if (stkTop == 0) // Stack empty.
-			throw new EmptyStackException();
-		
+				throw new EmptyStackException();
+
 		return stk[--stkTop];
 	}
 	
