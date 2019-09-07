@@ -1,5 +1,7 @@
 package stack;
 
+import general.*;
+
 class CircularStack<T> implements StackQueueInterface<T> {
 	private T[] stk;
 	private int stkTop;
@@ -33,9 +35,9 @@ class CircularStack<T> implements StackQueueInterface<T> {
 		stk[stkTop++] = o;
 	}
 	
-	public T pop() throws EmptyStackException {
+	public T pop() throws EmptyArrayException {
 		if (stkTop == 0) // Stack empty.
-				throw new EmptyStackException();
+				throw new EmptyArrayException();
 
 		return stk[--stkTop];
 	}

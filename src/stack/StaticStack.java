@@ -1,5 +1,7 @@
 package stack;
 
+import general.*;
+
 class StaticStack<T> implements StackQueueInterface<T> {
 	private T[] stk;
 	private int stkTop;
@@ -25,16 +27,16 @@ class StaticStack<T> implements StackQueueInterface<T> {
 	public int getItemCount() { return stkTop; }
 	
 	// Interaction Methods
-	public void push(T o) throws FullStackException {
+	public void push(T o) throws FullArrayException {
 		if (stkTop == stk.length) // Array is Full.
-			throw new FullStackException();
+			throw new FullArrayException();
 		
 		stk[stkTop++] = o;		
 	}
 	
-	public T pop() throws EmptyStackException {
+	public T pop() throws EmptyArrayException {
 		if(stkTop == 0)  // Array is empty.
-			throw new EmptyStackException();
+			throw new EmptyArrayException();
 		
 		return stk[--stkTop];	
 	}

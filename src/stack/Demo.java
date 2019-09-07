@@ -1,5 +1,7 @@
 package stack;
 
+import general.*;
+
 public class Demo {
 	
 	static StaticStack<Integer> createStaticStack(int len) {
@@ -27,7 +29,7 @@ public class Demo {
 				stk.push(i*10);
 				System.out.println("Item Count: " + stk.getItemCount() + "\n");
 			}
-			catch(FullStackException e) {
+			catch(FullArrayException e) {
 				System.out.println("Exception Raised: " + e);
 			}
 		}
@@ -39,7 +41,7 @@ public class Demo {
 				stk.pop();
 				System.out.println("Item Count: " + stk.getItemCount() + " \n");
 			}
-			catch(EmptyStackException e) {
+			catch(EmptyArrayException e) {
 				System.out.println("Exception Raised: " + e);
 			}
 		}
@@ -71,7 +73,7 @@ public class Demo {
 			try {
 			System.out.println("Popping: " + stk.pop());
 			}
-			catch(EmptyStackException e) {
+			catch(EmptyArrayException e) {
 				System.out.println("Exception Raised: " + e);
 			}
 		}
@@ -103,7 +105,7 @@ public class Demo {
 			try {
 				System.out.println("Popping: " + stk.pop());
 			}
-			catch(EmptyStackException e) {
+			catch(EmptyArrayException e) {
 				System.out.println("Exception Raised: " + e);
 			}
 		}

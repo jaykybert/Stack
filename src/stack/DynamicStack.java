@@ -1,6 +1,7 @@
 package stack;
 
 import java.util.Arrays;
+import general.*;
 
 public class DynamicStack<T> implements StackQueueInterface<T> {
 	private T[] stk;
@@ -36,9 +37,9 @@ public class DynamicStack<T> implements StackQueueInterface<T> {
 			
 	}
 	
-	public T pop() throws EmptyStackException {
+	public T pop() throws EmptyArrayException {
 		if(stkTop == 0) // Array is empty.
-			throw new EmptyStackException();
+			throw new EmptyArrayException();
 		
 		return stk[--stkTop];
 	}
