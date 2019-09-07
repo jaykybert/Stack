@@ -1,6 +1,6 @@
 package stack;
 
-interface StackInterface<T> {
+interface StackQueueInterface<T> {
 	void push(T ob) throws FullStackException;
 	T pop() throws EmptyStackException;
 	int getLength(); // Length of array.

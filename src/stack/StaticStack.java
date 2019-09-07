@@ -1,6 +1,6 @@
 package stack;
 
-class StaticStack<T> implements StackInterface<T> {
+class StaticStack<T> implements StackQueueInterface<T> {
 	private T[] stk;
 	private int stkTop;
 	

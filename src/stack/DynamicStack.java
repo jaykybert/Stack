@@ -2,7 +2,7 @@ package stack;
 
 import java.util.Arrays;
 
-public class DynamicStack<T> implements StackInterface<T> {
+public class DynamicStack<T> implements StackQueueInterface<T> {
 	private T[] stk;
 	private int stkTop;
 	

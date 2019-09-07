@@ -1,6 +1,6 @@
 package stack;
 
-class CircularStack<T> implements StackInterface<T> {
+class CircularStack<T> implements StackQueueInterface<T> {
 	private T[] stk;
 	private int stkTop;
 	

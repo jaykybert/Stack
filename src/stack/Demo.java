@@ -116,7 +116,7 @@ public class Demo {
 		//Demo.demoStaticStack(staticStack);
 		
 		DynamicStack<Double> dynamicStack = Demo.createDynamicStack(5);
-		//demo.DemoDynamicStack(dynamicStack);
+		//Demo.demoDynamicStack(dynamicStack);
 		
 		/* CircularStack Notes:
 		 * Item Count resets to 1 once push() restarts at the start of the array.
