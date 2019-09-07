@@ -126,5 +126,6 @@ public class Demo {
 		 */
 		CircularStack<Character> circularStack = Demo.createCircularStack(3);
 		Demo.demoCircularStack(circularStack);
+		
 	}
 }
