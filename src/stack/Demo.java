@@ -86,8 +86,8 @@ public class Demo {
 		System.out.println("Stack Length: " + stk.getLength());
 		
 		System.out.println();
-		
-		// Overwrite data.
+				
+		// Overwrite stack.
 		for(int i=3; i < 6; i++) {
 			System.out.println("Adding: " + (char) ('A' + i));
 			stk.push((char) ('A' + i));
@@ -124,11 +124,5 @@ public class Demo {
 		 */
 		CircularStack<Character> circularStack = Demo.createCircularStack(3);
 		Demo.demoCircularStack(circularStack);
-		
-	
-	
-
-		
-
 	}
 }
