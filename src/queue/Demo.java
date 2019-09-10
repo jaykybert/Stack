@@ -32,8 +32,7 @@ public class Demo {
 			catch(EmptyArrayException e) { 
 				System.out.println("Exception Caught: " + e);
 			}
-		}
-		
+		}	
 		System.out.println("Item Count: " + queue.getItemCount());
 		System.out.println("Queue Length: " + queue.getLength());
 	}
