@@ -1,5 +1,6 @@
 package queue;
 
+import java.util.Arrays;
 import general.*;
 
 public class DynamicQueue<T> implements StackQueueInterface<T> {
@@ -9,9 +10,7 @@ public class DynamicQueue<T> implements StackQueueInterface<T> {
 	// Constructors
 	DynamicQueue(T[] arr) {
 		queue = arr;
-		
 		qGet = qPut = 0;
-		
 		// Find the correct put index for initialised arrays.
 		for(int i=0; i < queue.length; i++) {
 			if(queue[i] == null) {
@@ -19,5 +18,31 @@ public class DynamicQueue<T> implements StackQueueInterface<T> {
 				return;
 			}
 		}
+	}
+	
+	DynamicQueue(DynamicQueue<T> o) {
+		queue = o.queue;
+		qGet = o.qGet;
+		qPut = o.qPut;
+	}
+	
+	// Access Methods
+	public int getLength() { return queue.length; }
+	public int getItemCount() { return queue.length - qGet; }
+	private void setQueue(T[] o) { queue = o; }
+	
+	// Interaction  Methods
+	public void push(T o) {
+		if (qPut == queue.length) // Increase array size.
+			setQueue(Arrays.copyOf(queue, queue.length * 5));
+		
+		queue[qPut++] = o;
+	}
+	
+	public T pop() throws EmptyArrayException {
+		if(qGet == qPut)
+			throw new EmptyArrayException();
+		
+		return queue[qGet++];
 	}
 }

@@ -9,9 +9,7 @@ class StaticQueue<T> implements StackQueueInterface<T> {
 	// Constructors
 	StaticQueue(T[] arr) {
 		queue = arr;
-		
 		qGet = qPut = 0; 
-
 		// Find the correct put index for initialised arrays.
 		for(int i=0; i < queue.length; i++) {
 			if(queue[i] == null) {
