@@ -1,6 +1,10 @@
 package queue;
 
 import general.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
 
 public class Demo {
 
@@ -38,7 +42,30 @@ public class Demo {
 	}
 
 	public static void main(String[] args) {
-		StaticQueue<Character> staticQueue = Demo.createStaticQueue(5);
-		Demo.demoStaticQueue(staticQueue);
+		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter the number corresponding to the type of stack you wish to demo.");
+		System.out.println(" - 1: Static Stack\n - 2: Dynamic Stack\n - 3: Circular Stack");
+		System.out.println(" > ");
+		try {
+			String input = r.readLine();
+				
+			switch(input) {
+			case "1":
+				StaticQueue<Character> staticQueue = Demo.createStaticQueue(5);
+				Demo.demoStaticQueue(staticQueue);
+				break;
+			
+			case "2":
+				break;
+				
+			default:
+				break;
+			
+			}
+	
+		}
+		catch(IOException e) {
+			System.out.println("Exception Caught: " + e);
+		}
 	}
 }
