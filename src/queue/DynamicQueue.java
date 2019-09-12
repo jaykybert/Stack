@@ -28,7 +28,7 @@ public class DynamicQueue<T> implements StackQueueInterface<T> {
 	
 	// Access Methods
 	public int getLength() { return queue.length; }
-	public int getItemCount() { return queue.length - qGet; }
+	public int getItemCount() { return qPut; }
 	private void setQueue(T[] o) { queue = o; }
 	
 	// Interaction  Methods

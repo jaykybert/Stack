@@ -27,7 +27,7 @@ class StaticQueue<T> implements StackQueueInterface<T> {
 	
 	// Access Methods
 	public int getLength() { return queue.length; }
-	public int getItemCount() { return queue.length - qGet; } // ?
+	public int getItemCount() { return qPut; }
 	
 	// Interaction Methods
 	public void push(T o) throws FullArrayException {
