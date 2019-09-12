@@ -13,8 +13,16 @@ public class Demo {
 		StaticQueue<Character> q = new StaticQueue<Character>(chArray);
 		return q;
 	}
+	
+	static DynamicQueue<Integer> createDynamicQueue(int len) {
+		Integer[] intArray = new Integer[len];
+		DynamicQueue<Integer> q = new DynamicQueue<Integer>(intArray);
+		return q;
+	}
 
 	static void demoStaticQueue(StaticQueue<Character> queue) {
+		System.out.println("Item Count: " + queue.getItemCount());
+		System.out.println("Queue Length: " + queue.getLength());
 		for(int i=0; i < 6; i++) {
 			try {
 				queue.push((char) ('a' + i));
@@ -40,6 +48,18 @@ public class Demo {
 		System.out.println("Item Count: " + queue.getItemCount());
 		System.out.println("Queue Length: " + queue.getLength());
 	}
+	
+	static void demoDynamicQueue(DynamicQueue<Integer> queue) {
+		System.out.println("Initial Item Count: " + queue.getItemCount());
+		System.out.println("Initial Queue Length: " + queue.getLength());
+		for(int i=0; i < 3; i++) {
+			queue.push(i * 5);
+			System.out.println("Adding: " + i * 5);	
+		}
+		System.out.println("Item Count: " + queue.getItemCount());
+		System.out.println("Queue Length: " + queue.getLength());
+		
+	}
 
 	public static void main(String[] args) {
 		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
@@ -56,6 +76,8 @@ public class Demo {
 				break;
 			
 			case "2":
+				DynamicQueue<Integer> dynamicQueue = Demo.createDynamicQueue(3);
+				Demo.demoDynamicQueue(dynamicQueue);
 				break;
 				
 			default:
