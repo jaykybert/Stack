@@ -50,7 +50,7 @@ public class Demo {
 	}
 	
 	static void demoDynamicQueue(DynamicQueue<Integer> queue) {
-		System.out.println("Initial Item Count: " + queue.getItemCount());
+		System.out.println("\nInitial Item Count: " + queue.getItemCount());
 		System.out.println("Initial Queue Length: " + queue.getLength());
 		for(int i=0; i < 3; i++) {
 			queue.push(i * 5);
@@ -59,13 +59,39 @@ public class Demo {
 		System.out.println("Item Count: " + queue.getItemCount());
 		System.out.println("Queue Length: " + queue.getLength());
 		
+		System.out.println("\nIncrease array size when pushing to a full queue...");
+		
+		for(int i=3; i < 15; i++) {
+			queue.push(i*5);
+			System.out.println("Adding: " + i * 5);
+		}
+		System.out.println("Item Count: " + queue.getItemCount());
+		System.out.println("Queue Length: " + queue.getLength());
+		
+		System.out.println();
+		
+		for(int i=0; i < 16; i++) {
+			try {
+				System.out.println("Popping: " + queue.pop());
+			}
+			catch(EmptyArrayException e) {
+				System.out.println("Exception Caught: " + e);
+			}
+		}
+		System.out.println("Item Count: " + queue.getItemCount());
+		System.out.println("Queue Length: " + queue.getLength());
+			
+		
+
 	}
 
+	// TODO: Don't hardcode values for demo, use length of queue relatively.
+	// Create constant for array multiplier. i.e. const = 2; (array gets twice as big).
 	public static void main(String[] args) {
 		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter the number corresponding to the type of stack you wish to demo.");
 		System.out.println(" - 1: Static Stack\n - 2: Dynamic Stack\n - 3: Circular Stack");
-		System.out.println(" > ");
+		System.out.print(" > ");
 		try {
 			String input = r.readLine();
 				
