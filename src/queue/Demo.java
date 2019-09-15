@@ -21,72 +21,75 @@ public class Demo {
 	}
 
 	static void demoStaticQueue(StaticQueue<Character> queue) {
-		System.out.println("Item Count: " + queue.getItemCount());
-		System.out.println("Queue Length: " + queue.getLength());
-		for(int i=0; i < 6; i++) {
+		System.out.println("\nItem Count\t\t" + queue.getItemCount());
+		System.out.println("Queue Length\t\t" + queue.getLength());
+		
+		System.out.println("\nPush items to the queue...");
+		for(int i=0; i < queue.getLength() + 1; i++) {
 			try {
 				queue.push((char) ('a' + i));
-				System.out.println("Adding: " + (char) ('a' + i));
+				System.out.println("... adding " + (char) ('a' + i) + "  -  Item Count\t" + queue.getItemCount());
 			}
 			catch(FullArrayException e) {
 				System.out.println("Exception Caught: " + e);
 			}
 		}
 
-		System.out.println("Item Count: " + queue.getItemCount());
-		System.out.println("Queue Length: " + queue.getLength());
+		System.out.println("Item Count\t" + queue.getItemCount());
+		System.out.println("Queue Length\t" + queue.getLength());
 
-		System.out.println();
-		for(int i=0; i < 6; i++) {
+		System.out.println("\nPop items from the queue...");
+		for(int i=0; i < queue.getLength() + 1; i++) {
 			try {
-				System.out.println("Popped: " + queue.pop() + "\t - Item Count: " + queue.getItemCount());
+				System.out.println("... popping " + queue.pop() + "  -  Item Count\t" + queue.getItemCount());
 			}
 			catch(EmptyArrayException e) { 
 				System.out.println("Exception Caught: " + e);
 			}
 		}	
-		System.out.println("Item Count: " + queue.getItemCount());
-		System.out.println("Queue Length: " + queue.getLength());
+		System.out.println("Item Count\t" + queue.getItemCount());
+		System.out.println("Queue Length\t" + queue.getLength());
 	}
 	
 	static void demoDynamicQueue(DynamicQueue<Integer> queue) {
-		System.out.println("\nInitial Item Count: " + queue.getItemCount());
-		System.out.println("Initial Queue Length: " + queue.getLength());
-		for(int i=0; i < 3; i++) {
+		System.out.println("\nArray Multiplier\t" + queue.getArrayMultiplier());		
+		System.out.println("Initial Item Count\t" + queue.getItemCount());
+		System.out.println("Initial Queue Length\t" + queue.getLength());
+
+		System.out.println("\nPush items to the queue...");
+		
+		for(int i=0; i < queue.getLength(); i++) {
 			queue.push(i * 5);
-			System.out.println("Adding: " + i * 5);	
+			System.out.println("... adding " + i * 5 + "  -  Item Count\t" + queue.getItemCount());	
 		}
-		System.out.println("Item Count: " + queue.getItemCount());
-		System.out.println("Queue Length: " + queue.getLength());
+		System.out.println("Item Count\t" + queue.getItemCount());
+		System.out.println("Queue Length\t" + queue.getLength());
 		
 		System.out.println("\nIncrease array size when pushing to a full queue...");
 		
-		for(int i=3; i < 15; i++) {
+		int qLimit = queue.getLength() * queue.getArrayMultiplier();
+		
+		for(int i=queue.getLength(); i < qLimit; i++) {
 			queue.push(i*5);
-			System.out.println("Adding: " + i * 5);
+			System.out.println("... adding " + i * 5 + "  -  Item Count\t" + queue.getItemCount());
 		}
-		System.out.println("Item Count: " + queue.getItemCount());
-		System.out.println("Queue Length: " + queue.getLength());
+		System.out.println("Item Count\t" + queue.getItemCount());
+		System.out.println("Queue Length\t" + queue.getLength());
 		
-		System.out.println();
+		System.out.println("\nPop items from the queue...");
 		
-		for(int i=0; i < 16; i++) {
+		for(int i=0; i < queue.getLength() + 1; i++) {
 			try {
-				System.out.println("Popping: " + queue.pop());
+				System.out.println("... popping " + queue.pop() + "  -  Item Count\t" + queue.getItemCount());
 			}
 			catch(EmptyArrayException e) {
 				System.out.println("Exception Caught: " + e);
 			}
 		}
-		System.out.println("Item Count: " + queue.getItemCount());
-		System.out.println("Queue Length: " + queue.getLength());
-			
-		
-
+		System.out.println("Item Count\t" + queue.getItemCount());
+		System.out.println("Queue Length\t" + queue.getLength());
 	}
-
-	// TODO: Don't hardcode values for demo, use length of queue relatively.
-	// Create constant for array multiplier. i.e. const = 2; (array gets twice as big).
+	
 	public static void main(String[] args) {
 		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter the number corresponding to the type of stack you wish to demo.");
@@ -102,15 +105,13 @@ public class Demo {
 				break;
 			
 			case "2":
-				DynamicQueue<Integer> dynamicQueue = Demo.createDynamicQueue(3);
+				DynamicQueue<Integer> dynamicQueue = Demo.createDynamicQueue(2);
 				Demo.demoDynamicQueue(dynamicQueue);
 				break;
 				
 			default:
 				break;
-			
 			}
-	
 		}
 		catch(IOException e) {
 			System.out.println("Exception Caught: " + e);
