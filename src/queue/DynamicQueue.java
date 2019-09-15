@@ -7,6 +7,7 @@ public class DynamicQueue<T> implements StackQueueInterface<T> {
 	private T[] queue;
 	private int qGet, qPut;
 	private int qCount;
+	private int array_multiplier = 3;
 	
 	// Constructors
 	DynamicQueue(T[] arr) {
@@ -32,11 +33,13 @@ public class DynamicQueue<T> implements StackQueueInterface<T> {
 	public int getLength() { return queue.length; }
 	public int getItemCount() { return qCount; }
 	private void setQueue(T[] o) { queue = o; }
+	int getArrayMultiplier() { return array_multiplier; }
+	void setArrayMultiplier(int n) { array_multiplier = n; }
 	
 	// Interaction  Methods
 	public void push(T o) {
 		if (qPut == queue.length) // Increase array size.
-			setQueue(Arrays.copyOf(queue, queue.length * 5));
+			setQueue(Arrays.copyOf(queue, queue.length * getArrayMultiplier()));
 		qCount++;
 		queue[qPut++] = o;
 	}
