@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 
-public class Demo {
+public class DemoQueue {
 
 	static StaticQueue<Character> createStaticQueue(int len) {
 		Character[] chArray = new Character[len];
@@ -28,7 +28,7 @@ public class Demo {
 		for(int i=0; i < queue.getLength() + 1; i++) {
 			try {
 				queue.push((char) ('a' + i));
-				System.out.println("... adding " + (char) ('a' + i) + "  -  Item Count\t" + queue.getItemCount());
+				System.out.println("... adding " + (char) ('a' + i) + " \tItem Count - " + queue.getItemCount());
 			}
 			catch(FullArrayException e) {
 				System.out.println("Exception Caught: " + e);
@@ -41,7 +41,7 @@ public class Demo {
 		System.out.println("\nPop items from the queue...");
 		for(int i=0; i < queue.getLength() + 1; i++) {
 			try {
-				System.out.println("... popping " + queue.pop() + "  -  Item Count\t" + queue.getItemCount());
+				System.out.println("... popping " + queue.pop() + "\tItem Count - " + queue.getItemCount());
 			}
 			catch(EmptyArrayException e) { 
 				System.out.println("Exception Caught: " + e);
@@ -60,7 +60,7 @@ public class Demo {
 		
 		for(int i=0; i < queue.getLength(); i++) {
 			queue.push(i * 5);
-			System.out.println("... adding " + i * 5 + "  -  Item Count\t" + queue.getItemCount());	
+			System.out.println("... adding " + i * 5 + "\tItem Count - " + queue.getItemCount());	
 		}
 		System.out.println("Item Count\t" + queue.getItemCount());
 		System.out.println("Queue Length\t" + queue.getLength());
@@ -71,7 +71,7 @@ public class Demo {
 		
 		for(int i=queue.getLength(); i < qLimit; i++) {
 			queue.push(i*5);
-			System.out.println("... adding " + i * 5 + "  -  Item Count\t" + queue.getItemCount());
+			System.out.println("... adding " + i * 5 + "\tItem Count - " + queue.getItemCount());
 		}
 		System.out.println("Item Count\t" + queue.getItemCount());
 		System.out.println("Queue Length\t" + queue.getLength());
@@ -80,7 +80,7 @@ public class Demo {
 		
 		for(int i=0; i < queue.getLength() + 1; i++) {
 			try {
-				System.out.println("... popping " + queue.pop() + "  -  Item Count\t" + queue.getItemCount());
+				System.out.println("... popping " + queue.pop() + "\tItem Count - " + queue.getItemCount());
 			}
 			catch(EmptyArrayException e) {
 				System.out.println("Exception Caught: " + e);
@@ -92,21 +92,21 @@ public class Demo {
 	
 	public static void main(String[] args) {
 		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Enter the number corresponding to the type of stack you wish to demo.");
-		System.out.println(" - 1: Static Stack\n - 2: Dynamic Stack\n - 3: Circular Stack");
+		System.out.println("Enter the number corresponding to the type of queue you wish to demo.");
+		System.out.println(" - 1: Static Queue\n - 2: Dynamic Queue\n - 3: Circular Queue");
 		System.out.print(" > ");
 		try {
 			String input = r.readLine();
 				
 			switch(input) {
 			case "1":
-				StaticQueue<Character> staticQueue = Demo.createStaticQueue(5);
-				Demo.demoStaticQueue(staticQueue);
+				StaticQueue<Character> staticQueue = DemoQueue.createStaticQueue(5);
+				DemoQueue.demoStaticQueue(staticQueue);
 				break;
 			
 			case "2":
-				DynamicQueue<Integer> dynamicQueue = Demo.createDynamicQueue(2);
-				Demo.demoDynamicQueue(dynamicQueue);
+				DynamicQueue<Integer> dynamicQueue = DemoQueue.createDynamicQueue(2);
+				DemoQueue.demoDynamicQueue(dynamicQueue);
 				break;
 				
 			default:
