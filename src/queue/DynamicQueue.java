@@ -30,9 +30,9 @@ public class DynamicQueue<T> implements StackQueueInterface<T> {
 	}
 	
 	// Access Methods
+	private void setQueue(T[] o) { queue = o; }
 	public int getLength() { return queue.length; }
 	public int getItemCount() { return qCount; }
-	private void setQueue(T[] o) { queue = o; }
 	int getArrayMultiplier() { return array_multiplier; }
 	void setArrayMultiplier(int n) { array_multiplier = n; }
 	

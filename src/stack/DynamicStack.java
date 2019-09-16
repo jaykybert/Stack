@@ -6,6 +6,7 @@ import general.*;
 public class DynamicStack<T> implements StackQueueInterface<T> {
 	private T[] stk;
 	private int stkTop;
+	private int array_multiplier = 3;
 	
 	// Constructors
 	DynamicStack(T[] arr) {
@@ -23,18 +24,19 @@ public class DynamicStack<T> implements StackQueueInterface<T> {
 		stkTop = o.stkTop;
 	}
 	
+	// Access Methods
 	private void setStack(T[] o) { stk = o; }
-	
 	public int getLength() { return stk.length; }
 	public int getItemCount() { return stkTop; }
+	int getArrayMultiplier() { return array_multiplier; }
+	void setArrayMultiplier(int n) { array_multiplier = n; }
 	
 	// Interaction Methods
 	public void push(T o) {
 		if(stkTop == stk.length)  // Increase array size.
-			setStack(Arrays.copyOf(stk, stk.length * 5));
+			setStack(Arrays.copyOf(stk, stk.length * getArrayMultiplier()));
 		
-		stk[stkTop++] = o;
-			
+		stk[stkTop++] = o;		
 	}
 	
 	public T pop() throws EmptyArrayException {
