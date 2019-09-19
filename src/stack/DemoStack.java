@@ -26,8 +26,8 @@ public class DemoStack {
 	}
 
 	static void demoStaticStack(StaticStack<Integer> stk) {
-		System.out.println("\nItem Count\t\t" + stk.getItemCount());
-		System.out.println("Queue Length\t\t" + stk.getLength());
+		System.out.println("\nItem Count\t" + stk.getItemCount());
+		System.out.println("Stack Length\t" + stk.getLength());
 
 		System.out.println("\nPush items to the stack...");
 		for(int i=0; i < stk.getLength() + 1; i++) {
@@ -39,9 +39,6 @@ public class DemoStack {
 				System.out.println("Exception Caught: " + e);
 			}
 		}
-		System.out.println("Item Count\t" + stk.getItemCount());
-		System.out.println("Queue Length\t" + stk.getLength());
-
 		System.out.println("\nPop items from the stack...");
 		for(int i=0; i < stk.getLength() + 1; i++) {
 			try {
@@ -51,106 +48,112 @@ public class DemoStack {
 				System.out.println("Exception Caught: " + e);
 			}
 		}	
-		System.out.println("Item Count\t" + stk.getItemCount());
-		System.out.println("Queue Length\t" + stk.getLength());
 	}
 
 	static void demoDynamicStack(DynamicStack<Double> stk) {
-		for(int i=0; i < 5; i++) {
-			System.out.println("Adding: " + i * 0.1);
-			stk.push(i * 0.1);			
+		System.out.println("\nArray Multiplier\t" + stk.getArrayMultiplier());		
+		System.out.println("Initial Item Count\t" + stk.getItemCount());
+		System.out.println("Initial Stack Length\t" + stk.getLength());
+
+		System.out.println("\nPush items to the stack...");
+
+		for(int i=0; i < stk.getLength(); i++) {
+			stk.push(i * 1.0);
+			System.out.println("... adding " + i * 1.0 + "\tItem Count - " + stk.getItemCount());	
 		}
-		System.out.println("Item Count: " + stk.getItemCount());
-		System.out.println("Stack Length: " + stk.getLength());
+		System.out.println("\nIncrease array size when pushing to a full stack...");
 
-		System.out.println("\nPushing to full stack:\nAdding: " + 0.5);
-		stk.push(0.5);
-		System.out.println("Item Count: " + stk.getItemCount());
-		System.out.println("New Stack Length: " + stk.getLength() + "\n");
+		int qLimit = stk.getLength() * stk.getArrayMultiplier();
 
-		for(int i=6; i < 25; i++) {
-			System.out.println("Adding: " + i * 0.1);
-			stk.push(i * 0.1);
+		for(int i=stk.getLength(); i < qLimit; i++) {
+			stk.push(i * 1.0);
+			System.out.println("... adding " + i * 1.0 + "\tItem Count - " + stk.getItemCount());
 		}
-		System.out.println("Item Count: " + stk.getItemCount());
-		System.out.println("Stack Length: " + stk.getLength());
+		System.out.println("New Stack Length\t" + stk.getLength());
+		System.out.println("\nPop items from the stack...");
 
-		System.out.println();
-
-		for(int i=0; i < 26; i++) {
+		for(int i=0; i < stk.getLength() + 1; i++) {
 			try {
-				System.out.println("Popping: " + stk.pop());
+				System.out.println("... popping " + stk.pop() + "\tItem Count - " + stk.getItemCount());
 			}
 			catch(EmptyArrayException e) {
-				System.out.println("Exception Raised: " + e);
+				System.out.println("Exception Caught: " + e);
 			}
 		}
 	}
 
 	static void demoCircularStack(CircularStack<Character> stk) {
-		for(int i=0; i < 3; i++) {
-			System.out.println("Adding: " + (char) ('A' + i));
-			stk.push((char) ('A' + i));
-		}
-		System.out.println("Item Count: " + stk.getItemCount());
-		System.out.println("Stack Length: " + stk.getLength());
+		System.out.println("Initial Item Count\t" + stk.getItemCount());
+		System.out.println("Stack Length\t\t" + stk.getLength());
 
-		System.out.println();
+		System.out.println("\nPush items to the stack...");
+
+		for(int i=0; i < stk.getLength(); i++) {
+			stk.push((char) ('A' + i));
+			System.out.println("... adding " + (char) ('A' + i) + "\tItem Count - " + stk.getItemCount());
+		}
+		System.out.println("\nOverwrite items in the stack...");
 
 		// Overwrite stack.
-		for(int i=3; i < 6; i++) {
-			System.out.println("Adding: " + (char) ('A' + i));
+		for(int i=stk.getLength(); i < stk.getLength() * 2; i++) {
 			stk.push((char) ('A' + i));
-		}
-		System.out.println("Item Count: " + stk.getItemCount());
-		System.out.println("Stack Length: " + stk.getLength());
-
-		System.out.println();
+			System.out.println("... adding " + (char) ('A' + i) + "\tItem Count - " + stk.getItemCount());
+		}		
+		System.out.println("\nPop items from the stack...");
 
 		// Popping.
-		for(int i=0; i < 4; i++) {
-
+		for(int i=0; i < stk.getLength() + 1; i++) {
 			try {
-				System.out.println("Popping: " + stk.pop());
+				System.out.println("... popping " + stk.pop() + "\tItem Count - " + stk.getItemCount());
 			}
 			catch(EmptyArrayException e) {
-				System.out.println("Exception Raised: " + e);
+				System.out.println("Exception Caught: " + e);
 			}
 		}
-		System.out.println("Item Count: " + stk.getItemCount());
-		System.out.println("Stack Length: " + stk.getLength());
 	}
 
 	public static void main(String[] args) {
 		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Enter the number corresponding to the type of stack you wish to demo.");
-		System.out.println(" - 1: Static Stack\n - 2: Dynamic Stack\n - 3: Circular Stack");
-		System.out.print(" > ");
-		try {
-			String input = r.readLine();
+		String input = "";
+		do {
+			System.out.println("Enter the number corresponding to the type of stack you wish to demo.");
+			System.out.println(" - 1: Static Stack\n - 2: Dynamic Stack\n - 3: Circular Stack");
+			System.out.print(" > ");
+			try {
+				input = r.readLine();
 
-			switch(input) {
-			case "1":
-				StaticStack<Integer> staticStack = DemoStack.createStaticStack(5);
-				DemoStack.demoStaticStack(staticStack);
-				break;
+				switch(input) {
+				case "1":
+					StaticStack<Integer> staticStack = DemoStack.createStaticStack(5);
+					DemoStack.demoStaticStack(staticStack);
+					break;
 
-			case "2":
-				DynamicStack<Double> dynamicStack = DemoStack.createDynamicStack(2);
-				DemoStack.demoDynamicStack(dynamicStack);
-				break;
+				case "2":
+					DynamicStack<Double> dynamicStack = DemoStack.createDynamicStack(2);
+					DemoStack.demoDynamicStack(dynamicStack);
+					break;
 
-			case "3":
-				CircularStack<Character> circularStack = DemoStack.createCircularStack(5);
-				DemoStack.demoCircularStack(circularStack);
+				case "3":
+					CircularStack<Character> circularStack = DemoStack.createCircularStack(5);
+					DemoStack.demoCircularStack(circularStack);
 
-			default:
-				break;
+				default:
+					System.out.println("Invalid Option.");
+					break;
+				}
 			}
-		}
-		catch(IOException e) {
-			System.out.println("Exception Caught: " + e);
-		}
+			catch(IOException e) {
+				System.out.println("Exception Caught: " + e);
+			}
+			System.out.println("\n-----------------------------------\nWould you like to demo another stack? (Y/N)");
+			System.out.print(" > ");
+			try {
+				input = r.readLine();
+			}
+			catch(IOException e) {
+				System.out.println("Exception Caught: " + e);
+			}
+		} while(input.contentEquals("y"));
 	}
 }
 
